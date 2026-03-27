@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-neon: #efff00;
+  --color-background: #0a0a0a;
+  --color-surface: #111111;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: white;
+  }
+}
+
+@layer utilities {
+  .bg-neon {
+    background-color: var(--color-neon);
+  }
+
+  .text-neon {
+    color: var(--color-neon);
+  }
+
+  .border-neon {
+    border-color: var(--color-neon);
+  }
+
+  .bg-background {
+    background-color: var(--color-background);
+  }
+
+  .bg-surface {
+    background-color: var(--color-surface);
+  }
+
+  .glow-hover:hover {
+    box-shadow: 0 0 20px rgba(239, 255, 0, 0.05);
+  }
+}
