@@ -223,7 +223,7 @@ export default function Home() {
             href="#contacto"
             className="group relative px-8 py-4 bg-neon text-black font-bold rounded-xl text-base overflow-hidden transition-all hover:shadow-[0_0_40px_rgba(239,255,0,0.35)] hover:-translate-y-0.5 flex items-center gap-2"
           >
-            <span className="relative z-10">Quiero una Auditoría Gratis</span>
+            <span className="relative z-10">Descubrir cuánto estoy perdiendo</span>
             <ArrowRight
               size={18}
               className="relative z-10 group-hover:translate-x-1 transition-transform"
