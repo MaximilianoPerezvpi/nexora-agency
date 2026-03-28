@@ -17,9 +17,13 @@ import {
   CheckCircle,
   ChevronRight,
   Star,
+  MessageCircle,
+  Target,
+  Rocket,
+  ShieldCheck,
 } from "lucide-react";
 
-/* ─── ANIMATION VARIANTS ─────────────────────────────────── */
+/* ─── VARIANTS ───────────────────────────────────────────── */
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
   visible: {
@@ -61,7 +65,7 @@ function Counter({ to, suffix = "" }: { to: number; suffix?: string }) {
   );
 }
 
-/* ─── FLOATING ORBS BACKGROUND ──────────────────────────── */
+/* ─── ORBS ───────────────────────────────────────────────── */
 function FloatingOrbs() {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -116,7 +120,7 @@ function BentoCard({
   );
 }
 
-/* ─── TESTIMONIAL CARD ───────────────────────────────────── */
+/* ─── TESTIMONIAL ────────────────────────────────────────── */
 function TestimonialCard({
   quote,
   name,
@@ -164,7 +168,7 @@ export default function Home() {
     <main className="flex min-h-screen flex-col items-center overflow-hidden bg-[#050505]">
 
       {/* ══════════════════════════════════════
-          1. HERO
+          HERO — Atacar el dolor
       ══════════════════════════════════════ */}
       <section className="relative w-full min-h-screen flex flex-col items-center justify-center px-6 pt-24 pb-16">
         <FloatingOrbs />
@@ -176,34 +180,39 @@ export default function Home() {
           className="relative z-10 inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-neon/20 bg-neon/5 text-xs font-semibold text-neon mb-8 tracking-wider uppercase"
         >
           <span className="w-1.5 h-1.5 rounded-full bg-neon animate-pulse" />
-          Sistemas de IA · Agencia de automatización
+          IA + Diseño de élite · Partners de crecimiento
         </motion.div>
 
+        {/* H1 — PAS: Problema directo */}
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           className="relative z-10 max-w-5xl text-center text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.95] mb-6"
         >
-          Tu negocio vendiendo
+          Dejá de perder clientes
           <br />
           <span className="relative inline-block">
-            <span className="text-neon">mientras dormís.</span>
+            <span className="text-neon">por no responder a tiempo.</span>
             <span className="absolute -bottom-2 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-neon to-transparent opacity-60" />
           </span>
         </motion.h1>
 
+        {/* Subtítulo — Solución clara */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.35 }}
           className="relative z-10 max-w-2xl text-center text-lg md:text-xl text-gray-400 mb-12 leading-relaxed"
         >
-          Automatizamos tus ventas con IA para que respondas en{" "}
-          <span className="text-white font-semibold">menos de 1 segundo</span>,
-          califiques leads solo y cierres más, sin esfuerzo humano.
+          Escalamos tu negocio con{" "}
+          <span className="text-white font-semibold">IA y diseño de élite</span>{" "}
+          para que conviertas más consultas en ventas, 24/7. Tu empresa en{" "}
+          <span className="text-white font-semibold">piloto automático</span>,
+          sin perder el control.
         </motion.p>
 
+        {/* CTAs — fuerza máxima */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -214,7 +223,7 @@ export default function Home() {
             href="#contacto"
             className="group relative px-8 py-4 bg-neon text-black font-bold rounded-xl text-base overflow-hidden transition-all hover:shadow-[0_0_40px_rgba(239,255,0,0.35)] hover:-translate-y-0.5 flex items-center gap-2"
           >
-            <span className="relative z-10">Quiero automatizar mi negocio</span>
+            <span className="relative z-10">Quiero una Auditoría Gratis</span>
             <ArrowRight
               size={18}
               className="relative z-10 group-hover:translate-x-1 transition-transform"
@@ -225,10 +234,11 @@ export default function Home() {
             href="#servicios"
             className="px-8 py-4 border border-white/10 text-white/80 font-semibold rounded-xl text-base hover:bg-white/[0.04] hover:border-white/20 transition-all flex items-center gap-2"
           >
-            Ver servicios <ChevronRight size={16} />
+            Ver cómo lo hacemos <ChevronRight size={16} />
           </a>
         </motion.div>
 
+        {/* Trust strip */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -236,9 +246,9 @@ export default function Home() {
           className="relative z-10 mt-16 flex flex-wrap justify-center items-center gap-6 text-sm text-gray-500"
         >
           {[
-            "+50 negocios automatizados",
+            "+50 negocios escalados",
             "Respuesta en <1 seg",
-            "Soporte 24/7",
+            "Partners, no proveedores",
             "Sin contrato mínimo",
           ].map((t, i) => (
             <div key={i} className="flex items-center gap-2">
@@ -250,7 +260,7 @@ export default function Home() {
       </section>
 
       {/* ══════════════════════════════════════
-          2. STATS
+          STATS
       ══════════════════════════════════════ */}
       <section className="w-full py-20 px-6 border-y border-white/[0.05]">
         <motion.div
@@ -261,41 +271,17 @@ export default function Home() {
           className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center"
         >
           {[
-            {
-              value: 50,
-              suffix: "+",
-              label: "Proyectos entregados",
-              icon: <TrendingUp size={20} />,
-            },
-            {
-              value: 98,
-              suffix: "%",
-              label: "Clientes satisfechos",
-              icon: <Star size={20} />,
-            },
-            {
-              value: 3,
-              suffix: "x",
-              label: "Aumento promedio en ventas",
-              icon: <Zap size={20} />,
-            },
-            {
-              value: 24,
-              suffix: "/7",
-              label: "Disponibilidad del sistema",
-              icon: <Clock size={20} />,
-            },
+            { value: 50, suffix: "+", label: "Negocios escalados", icon: <TrendingUp size={20} /> },
+            { value: 98, suffix: "%", label: "Clientes satisfechos", icon: <Star size={20} /> },
+            { value: 3,  suffix: "x", label: "Aumento promedio en ventas", icon: <Zap size={20} /> },
+            { value: 10, suffix: "hs", label: "Semanales recuperadas con IA", icon: <Clock size={20} /> },
           ].map((stat, i) => (
-            <motion.div
-              key={i}
-              variants={fadeUp}
-              className="flex flex-col items-center gap-2"
-            >
+            <motion.div key={i} variants={fadeUp} className="flex flex-col items-center gap-2">
               <div className="text-neon mb-1 opacity-60">{stat.icon}</div>
               <p className="text-4xl md:text-5xl font-black tracking-tight text-white">
                 <Counter to={stat.value} suffix={stat.suffix} />
               </p>
-              <p className="text-gray-500 text-xs md:text-sm leading-snug max-w-[120px]">
+              <p className="text-gray-500 text-xs md:text-sm leading-snug max-w-[130px]">
                 {stat.label}
               </p>
             </motion.div>
@@ -304,7 +290,7 @@ export default function Home() {
       </section>
 
       {/* ══════════════════════════════════════
-          3. PROBLEMA
+          PROBLEMA — PAS: Agitación
       ══════════════════════════════════════ */}
       <section className="w-full py-32 px-6">
         <div className="max-w-4xl mx-auto">
@@ -319,10 +305,14 @@ export default function Home() {
               El problema real
             </p>
             <h2 className="text-4xl md:text-6xl font-black tracking-tighter leading-[1.05]">
-              Cada minuto sin responder
+              Mientras vos atendés el negocio,
               <br />
-              <span className="text-gray-600">es dinero que se va.</span>
+              <span className="text-gray-600">tu competencia te come el almuerzo.</span>
             </h2>
+            <p className="text-gray-500 text-lg mt-6 max-w-2xl mx-auto leading-relaxed">
+              No es falta de producto ni de ganas. Es que operar de forma manual
+              en 2025 te hace invisible ante clientes que compran en segundos.
+            </p>
           </motion.div>
 
           <motion.div
@@ -335,22 +325,22 @@ export default function Home() {
             {[
               {
                 icon: <Clock size={24} />,
-                title: "Respondés tarde",
-                desc: "El 78% de los compradores elige al primero en responder. Si tardás más de 5 minutos, ya perdiste.",
-                stat: "78%",
-                statLabel: "van al que responde primero",
+                title: "Respondés tarde o nunca",
+                desc: "El 78% de los compradores elige al primero en responder. Si tardás más de 5 minutos en contestar un mensaje, esa venta ya no es tuya.",
+                stat: "5 min",
+                statLabel: "es todo lo que tenés para cerrar",
               },
               {
                 icon: <Activity size={24} />,
-                title: "Tiempo desperdiciado",
-                desc: "Horas respondiendo las mismas preguntas de precio, horario y disponibilidad. Tiempo que no escala.",
-                stat: "4hs",
-                statLabel: "por día en mensajes repetitivos",
+                title: "10 horas semanales tiradas",
+                desc: "Precio, disponibilidad, horario, cómo llego. Las mismas preguntas, todos los días. Tiempo que no genera valor y te agota mentalmente.",
+                stat: "10hs",
+                statLabel: "por semana en tareas que la IA puede hacer",
               },
               {
                 icon: <Users size={24} />,
-                title: "Leads que se enfrían",
-                desc: "Un mensaje a las 2am sin respuesta es una venta que nunca va a pasar. Tu competencia sí contesta.",
+                title: "Leads que se enfrían solos",
+                desc: "Un mensaje a las 11pm sin respuesta es una venta perdida para siempre. Tu competencia tiene sistemas que contestan a las 3am. Vos, no.",
                 stat: "60%",
                 statLabel: "de consultas nocturnas sin atender",
               },
@@ -364,16 +354,10 @@ export default function Home() {
                   {item.icon}
                 </div>
                 <h3 className="text-lg font-bold mb-2">{item.title}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed mb-5">
-                  {item.desc}
-                </p>
+                <p className="text-gray-500 text-sm leading-relaxed mb-5">{item.desc}</p>
                 <div className="pt-4 border-t border-white/[0.05]">
-                  <span className="text-2xl font-black text-white">
-                    {item.stat}
-                  </span>
-                  <span className="text-gray-600 text-xs ml-2">
-                    {item.statLabel}
-                  </span>
+                  <span className="text-2xl font-black text-white">{item.stat}</span>
+                  <span className="text-gray-600 text-xs ml-2">{item.statLabel}</span>
                 </div>
               </motion.div>
             ))}
@@ -382,12 +366,9 @@ export default function Home() {
       </section>
 
       {/* ══════════════════════════════════════
-          4. SERVICIOS — BENTO GRID
+          SERVICIOS — BENTO GRID con copy PAS
       ══════════════════════════════════════ */}
-      <section
-        id="servicios"
-        className="w-full py-32 px-6 border-t border-white/[0.05]"
-      >
+      <section id="servicios" className="w-full py-32 px-6 border-t border-white/[0.05]">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial="hidden"
@@ -400,10 +381,14 @@ export default function Home() {
               Lo que hacemos
             </p>
             <h2 className="text-4xl md:text-6xl font-black tracking-tighter">
-              El stack completo
+              No somos una agencia más.
               <br />
-              para escalar tu negocio.
+              <span className="text-gray-500">Somos tu equipo de crecimiento.</span>
             </h2>
+            <p className="text-gray-500 text-lg mt-6 max-w-2xl mx-auto">
+              Combinamos tecnología de vanguardia con estrategia real para que
+              cada peso que invertís vuelva multiplicado.
+            </p>
           </motion.div>
 
           <motion.div
@@ -413,7 +398,7 @@ export default function Home() {
             variants={stagger(0.08)}
             className="grid md:grid-cols-3 gap-5"
           >
-            {/* Hero card — span 2 */}
+            {/* ★ Automatización IA — hero card */}
             <motion.div
               variants={fadeUp}
               whileHover={{ y: -4 }}
@@ -425,14 +410,17 @@ export default function Home() {
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-[radial-gradient(circle_at_20%_50%,rgba(239,255,0,0.05),transparent_60%)]" />
               <div className="relative z-10">
                 <span className="inline-block px-3 py-1 bg-neon/10 text-neon text-xs font-bold rounded-full mb-6 tracking-widest uppercase">
-                  ★ Oferta estrella
+                  ★ Servicio estrella
                 </span>
                 <h3 className="text-3xl font-black mb-4 tracking-tight">
-                  Automatización de WhatsApp
+                  Agentes de IA que trabajan por vos
                 </h3>
                 <p className="text-gray-400 text-base leading-relaxed mb-8 max-w-lg">
-                  Un agente de IA que atiende, califica y cierra consultas 24/7.
-                  Se integra con tu CRM y agenda reuniones automáticamente.
+                  Eliminamos las tareas repetitivas que te quitan{" "}
+                  <span className="text-white font-semibold">10 horas a la semana</span>.
+                  Implementamos agentes de IA en WhatsApp, email y web para que
+                  tu empresa atienda, califique y cierre ventas{" "}
+                  <span className="text-white font-semibold">mientras vos descansás</span>.
                 </p>
                 <ul className="flex flex-wrap gap-3">
                   {[
@@ -453,33 +441,134 @@ export default function Home() {
               </div>
             </motion.div>
 
+            {/* Community Management */}
+            <motion.div
+              variants={fadeUp}
+              whileHover={{ y: -4, transition: { duration: 0.2 } }}
+              className="relative group rounded-2xl border bg-white/[0.02] border-white/[0.06] hover:border-neon/20 hover:bg-white/[0.04] p-8 overflow-hidden transition-all duration-300"
+            >
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl bg-[radial-gradient(circle_at_30%_30%,rgba(239,255,0,0.04),transparent_60%)]" />
+              <div className="relative z-10">
+                <span className="inline-block px-3 py-1 bg-neon/10 text-neon text-xs font-bold rounded-full mb-5 tracking-widest uppercase">
+                  Nuevo
+                </span>
+                <div className="w-12 h-12 rounded-xl bg-white/5 text-gray-300 flex items-center justify-center mb-6">
+                  <MessageCircle size={22} />
+                </div>
+                <h3 className="text-xl font-bold mb-3 tracking-tight">
+                  Community Management Estratégico
+                </h3>
+                <p className="text-gray-400 text-sm leading-relaxed">
+                  No solo posteamos fotos. Creamos comunidades, gestionamos tu
+                  reputación y convertimos seguidores en clientes con{" "}
+                  <span className="text-gray-300 font-medium">
+                    estrategia de contenido real + pauta en Meta y Google
+                  </span>{" "}
+                  para que tus redes vendan, no solo se vean lindas.
+                </p>
+              </div>
+            </motion.div>
+
             <BentoCard
               icon={<Monitor size={22} />}
-              title="Diseño Web"
-              desc="Landing pages diseñadas para convertir. Rápidas, hermosas y con foco en resultados."
-              tag="Conversión"
-            />
-            <BentoCard
-              icon={<Sparkles size={22} />}
-              title="IA Solutions"
-              desc="Sistemas a medida que reducen costos operativos y automatizan flujos complejos."
+              title="Diseño Web que Convierte"
+              desc="Tu web carga en milisegundos con Next.js mientras la de tu competencia tarda 5 segundos. Landing pages diseñadas para vender, no solo para existir."
+              tag="Next.js · Velocidad"
             />
             <BentoCard
               icon={<Share2 size={22} />}
-              title="Social Media"
-              desc="Estrategias de contenido que generan demanda real y posicionan tu marca."
+              title="Growth & Paid Ads"
+              desc="Pauta inteligente en Meta, Google y TikTok. Cada peso invertido rastreado, optimizado y reportado. Sin magia negra, con resultados medibles."
             />
             <BentoCard
               icon={<Palette size={22} />}
-              title="Branding"
-              desc="Identidad visual premium que justifica precios más altos y genera confianza."
+              title="Branding Premium"
+              desc="Una identidad visual que justifica precios más altos antes de que abras la boca. El diseño es la primera venta que hacés."
             />
           </motion.div>
         </div>
       </section>
 
       {/* ══════════════════════════════════════
-          5. PROCESO
+          POR QUÉ NEXORA — 3 pilares
+      ══════════════════════════════════════ */}
+      <section className="w-full py-32 px-6 border-t border-white/[0.05]">
+        <div className="max-w-5xl mx-auto">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+            className="text-center mb-20"
+          >
+            <p className="text-neon text-sm font-bold tracking-widest uppercase mb-4">
+              Por qué Nexora
+            </p>
+            <h2 className="text-4xl md:text-6xl font-black tracking-tighter">
+              No somos proveedores.
+              <br />
+              <span className="text-neon">Somos tus partners.</span>
+            </h2>
+            <p className="text-gray-500 text-lg mt-6 max-w-xl mx-auto">
+              Nos importa que tu negocio crezca porque cuando vos ganás, nosotros
+              ganamos. Así de simple.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={stagger(0.15)}
+            className="grid md:grid-cols-3 gap-8"
+          >
+            {[
+              {
+                icon: <Rocket size={28} />,
+                title: "Velocidad de ejecución",
+                desc: "No hacemos presupuestos que demoran 3 semanas. En 48hs tenés una estrategia clara y en 7 días el primer sistema funcionando. El tiempo es dinero, el tuyo también.",
+                highlight: "De idea a ejecución en 7 días.",
+              },
+              {
+                icon: <Sparkles size={28} />,
+                title: "Tecnología de vanguardia",
+                desc: "Usamos Next.js, IA generativa, automatización con n8n y las últimas APIs del mercado. No te vendemos herramientas de 2018 con precio de 2025.",
+                highlight: "IA real. No humo.",
+              },
+              {
+                icon: <Target size={28} />,
+                title: "Foco 100% en ventas",
+                desc: "No diseñamos para que quede lindo en el portfolio. Cada decisión de diseño, copy y automatización está orientada a una sola cosa: que tu negocio facture más.",
+                highlight: "Resultados medibles, siempre.",
+              },
+            ].map((pillar, i) => (
+              <motion.div
+                key={i}
+                variants={fadeUp}
+                className="relative group p-8 rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:border-neon/20 transition-all duration-300"
+              >
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl bg-[radial-gradient(circle_at_50%_0%,rgba(239,255,0,0.04),transparent_60%)]" />
+                <div className="relative z-10">
+                  <div className="w-14 h-14 rounded-2xl bg-neon/10 text-neon flex items-center justify-center mb-6">
+                    {pillar.icon}
+                  </div>
+                  <h3 className="text-xl font-bold mb-3">{pillar.title}</h3>
+                  <p className="text-gray-500 text-sm leading-relaxed mb-5">
+                    {pillar.desc}
+                  </p>
+                  <div className="flex items-center gap-2 pt-4 border-t border-white/[0.05]">
+                    <ShieldCheck size={14} className="text-neon shrink-0" />
+                    <span className="text-neon text-xs font-bold">{pillar.highlight}</span>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════
+          PROCESO — PAS: Solución
       ══════════════════════════════════════ */}
       <section className="w-full py-32 px-6 border-t border-white/[0.05]">
         <div className="max-w-5xl mx-auto">
@@ -494,9 +583,9 @@ export default function Home() {
               Nuestro proceso
             </p>
             <h2 className="text-4xl md:text-6xl font-black tracking-tighter">
-              De cero a automatizado
+              Tres pasos para que
               <br />
-              en 3 pasos.
+              tu negocio trabaje solo.
             </h2>
           </motion.div>
 
@@ -513,22 +602,22 @@ export default function Home() {
               {[
                 {
                   step: "01",
-                  title: "Auditoría de tu negocio",
-                  desc: "Analizamos en profundidad dónde estás perdiendo leads, qué preguntas se repiten y cómo es tu proceso de venta actual. Identificamos el cuello de botella exacto.",
+                  title: "Auditoría gratuita",
+                  desc: "Analizamos tu proceso de ventas actual y te decimos en 30 minutos exactamente dónde estás perdiendo plata. Sin rodeos, sin PowerPoints de relleno.",
                   icon: <Activity size={22} />,
                   side: "left",
                 },
                 {
                   step: "02",
-                  title: "Diseño de la estrategia",
-                  desc: "Construimos el sistema de automatización a medida: el flujo de conversación, la lógica de calificación y las integraciones necesarias para tu industria.",
+                  title: "Diseño del sistema",
+                  desc: "Construimos la estrategia y el stack tecnológico a medida. Nada genérico. Cada automatización, cada copy y cada flujo está pensado para tu industria y tu cliente.",
                   icon: <Sparkles size={22} />,
                   side: "right",
                 },
                 {
                   step: "03",
-                  title: "Ejecución y optimización",
-                  desc: "Implementamos, testeamos y lanzamos. Después medimos resultados reales y ajustamos para maximizar la tasa de conversión mes a mes.",
+                  title: "Lanzamos y escalamos",
+                  desc: "En 7 días tu sistema está vivo. Medimos todo, reportamos todo y optimizamos mes a mes para que tu facturación siga subiendo sin que tengas que estar encima.",
                   icon: <TrendingUp size={22} />,
                   side: "left",
                 },
@@ -538,7 +627,6 @@ export default function Home() {
                   variants={fadeUp}
                   className="md:grid md:grid-cols-[1fr_auto_1fr] items-center gap-8 flex flex-col"
                 >
-                  {/* Left slot */}
                   <div
                     className={`w-full ${
                       item.side === "left"
@@ -552,37 +640,25 @@ export default function Home() {
                           {item.step}
                         </p>
                         <h3 className="text-2xl font-bold mb-2">{item.title}</h3>
-                        <p className="text-gray-400 text-sm leading-relaxed">
-                          {item.desc}
-                        </p>
+                        <p className="text-gray-400 text-sm leading-relaxed">{item.desc}</p>
                       </div>
                     )}
                   </div>
 
-                  {/* Center dot */}
                   <div className="flex items-center justify-center md:order-2">
                     <div className="w-14 h-14 rounded-full bg-[#050505] border-2 border-neon flex items-center justify-center text-neon shadow-[0_0_20px_rgba(239,255,0,0.25)] z-10 shrink-0">
                       {item.icon}
                     </div>
                   </div>
 
-                  {/* Right slot */}
-                  <div
-                    className={`w-full ${
-                      item.side === "right"
-                        ? "md:order-1 md:text-right"
-                        : ""
-                    }`}
-                  >
+                  <div className={`w-full ${item.side === "right" ? "md:order-1 md:text-right" : ""}`}>
                     {item.side === "right" && (
                       <div>
                         <p className="text-neon/30 text-6xl font-black leading-none mb-3 tracking-tighter">
                           {item.step}
                         </p>
                         <h3 className="text-2xl font-bold mb-2">{item.title}</h3>
-                        <p className="text-gray-400 text-sm leading-relaxed">
-                          {item.desc}
-                        </p>
+                        <p className="text-gray-400 text-sm leading-relaxed">{item.desc}</p>
                       </div>
                     )}
                   </div>
@@ -594,7 +670,7 @@ export default function Home() {
       </section>
 
       {/* ══════════════════════════════════════
-          6. TESTIMONIOS
+          TESTIMONIOS
       ══════════════════════════════════════ */}
       <section className="w-full py-32 px-6 border-t border-white/[0.05]">
         <div className="max-w-6xl mx-auto">
@@ -609,7 +685,9 @@ export default function Home() {
               Resultados reales
             </p>
             <h2 className="text-4xl md:text-5xl font-black tracking-tighter">
-              Lo que dicen nuestros clientes.
+              Ellos ya están escalando.
+              <br />
+              <span className="text-gray-600">¿Cuándo empezás vos?</span>
             </h2>
           </motion.div>
 
@@ -621,27 +699,27 @@ export default function Home() {
             className="grid md:grid-cols-2 gap-6"
           >
             <TestimonialCard
-              quote="Desde que implementamos el bot de WhatsApp con Nexora, filtramos a los curiosos y solo hablamos con gente lista para comprar. El sistema paga solo."
+              quote="Filtramos a los curiosos y ahora solo hablamos con gente lista para comprar. El bot de Nexora paga solo en el primer mes. Ojalá lo hubiera hecho antes."
               name="Martín L."
-              role="Dueño de E-commerce"
+              role="Dueño de E-commerce, Montevideo"
               metric="+40% ventas"
             />
             <TestimonialCard
-              quote="Antes perdía horas respondiendo a la madrugada. Ahora el sistema agenda las consultas automáticamente. Me devolvieron mi tiempo libre."
+              quote="Antes perdía horas respondiendo mensajes a la madrugada. Ahora el sistema agenda solo. Me devolvieron mi tiempo libre y mis ventas subieron igual."
               name="Sofía R."
-              role="Directora de Clínica Estética"
-              metric="-6hs/día"
+              role="Directora de Clínica Estética, Buenos Aires"
+              metric="-10hs/semana"
             />
             <TestimonialCard
-              quote="La landing que nos hicieron convierte el doble que la anterior. Diseño impecable y cargó mucho más rápido. Cero quejas."
+              quote="La landing nueva convierte el doble y carga en un segundo. Mi competencia sigue con webs lentas de 2019. La diferencia es brutal."
               name="Diego M."
-              role="CEO de inmobiliaria"
+              role="CEO Inmobiliaria, Punta del Este"
               metric="2x conversión"
             />
             <TestimonialCard
-              quote="Lo que más me sorprendió fue la velocidad. En una semana ya teníamos el sistema funcionando y los leads calificados entrando solos al CRM."
+              quote="En 7 días teníamos el sistema vivo y los leads calificados entrando solos al CRM. No son una agencia, son realmente un equipo de tu lado."
               name="Valentina C."
-              role="Fundadora de SaaS B2B"
+              role="Fundadora de SaaS B2B, Montevideo"
               metric="7 días al lanzar"
             />
           </motion.div>
@@ -649,7 +727,7 @@ export default function Home() {
       </section>
 
       {/* ══════════════════════════════════════
-          7. CTA FINAL
+          CTA FINAL — Urgencia + Confianza
       ══════════════════════════════════════ */}
       <section id="contacto" className="w-full py-32 px-6">
         <motion.div
@@ -666,36 +744,47 @@ export default function Home() {
 
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-neon/20 bg-neon/5 text-xs font-bold text-neon mb-8 tracking-wider uppercase">
               <span className="w-1.5 h-1.5 rounded-full bg-neon animate-pulse" />
-              Cupos limitados esta semana
+              Cupos limitados — solo 5 auditorías por semana
             </div>
 
             <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-6 leading-[1.0]">
-              Empezá a convertir más
+              Tu competencia ya está
               <br />
-              <span className="text-neon">clientes hoy.</span>
+              <span className="text-neon">usando IA. ¿Y vos?</span>
             </h2>
 
             <p className="text-gray-400 text-lg mb-10 max-w-xl mx-auto leading-relaxed">
-              Agendá una llamada de diagnóstico gratuita. En 30 minutos te
-              decimos exactamente cómo automatizar tu negocio.
+              Agendá tu auditoría gratuita hoy. En 30 minutos te mostramos
+              exactamente cuánto estás dejando sobre la mesa y cómo recuperarlo.
+              Sin compromiso, sin letra chica.
             </p>
 
-            <a
-              href="https://wa.me/1234567890"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group inline-flex items-center gap-3 bg-neon text-black px-10 py-5 rounded-xl font-black text-lg hover:shadow-[0_0_50px_rgba(239,255,0,0.4)] hover:-translate-y-1 transition-all relative overflow-hidden"
-            >
-              <span className="relative z-10">Hablar por WhatsApp ahora</span>
-              <ArrowRight
-                size={20}
-                className="relative z-10 group-hover:translate-x-1 transition-transform"
-              />
-              <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-            </a>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="https://wa.me/1234567890"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center justify-center gap-3 bg-neon text-black px-10 py-5 rounded-xl font-black text-lg hover:shadow-[0_0_50px_rgba(239,255,0,0.4)] hover:-translate-y-1 transition-all relative overflow-hidden"
+              >
+                <span className="relative z-10">Empezar a Escalar Ahora</span>
+                <ArrowRight
+                  size={20}
+                  className="relative z-10 group-hover:translate-x-1 transition-transform"
+                />
+                <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+              </a>
+              <a
+                href="https://wa.me/1234567890"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 border border-white/10 text-white/80 px-8 py-5 rounded-xl font-semibold text-base hover:bg-white/[0.04] transition-all"
+              >
+                Quiero una Auditoría Gratis
+              </a>
+            </div>
 
             <p className="text-gray-600 text-sm mt-6">
-              Sin compromiso · Respuesta en menos de 2 horas
+              Respondemos en menos de 2 horas · Sin contrato mínimo · 100% personalizado
             </p>
           </div>
         </motion.div>
@@ -712,14 +801,10 @@ export default function Home() {
             </div>
             Nexora
           </div>
-          <p>© {new Date().getFullYear()} Nexora. Todos los derechos reservados.</p>
+          <p>© {new Date().getFullYear()} Nexora · Partners de crecimiento digital</p>
           <div className="flex gap-6">
-            <a href="#servicios" className="hover:text-white transition-colors">
-              Servicios
-            </a>
-            <a href="#contacto" className="hover:text-white transition-colors">
-              Contacto
-            </a>
+            <a href="#servicios" className="hover:text-white transition-colors">Servicios</a>
+            <a href="#contacto" className="hover:text-white transition-colors">Contacto</a>
           </div>
         </div>
       </footer>
