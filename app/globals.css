@@ -3,44 +3,43 @@
 @tailwind utilities;
 
 :root {
-  --color-neon: #efff00;
-  --color-background: #0a0a0a;
-  --color-surface: #111111;
+  /* ── Marca Nexora — sincronizado con logo al pixel ──────────────────── */
+  --color-neon:        #13F48A;   /* verde neón core del icono N          */
+  --color-neon-bright: #0BF789;   /* brillo central / highlight           */
+  --color-neon-glow:   #13F48A40; /* neon con 25% opacidad para glows     */
+  --color-background:  #0a0a0a;
+  --color-surface:     #111111;
 }
 
 @layer base {
-  html {
-    scroll-behavior: smooth;
-  }
-
-  body {
-    background-color: var(--color-background);
-    color: white;
-  }
+  html { scroll-behavior: smooth; }
+  body { background-color: var(--color-background); color: white; }
 }
 
 @layer utilities {
-  .bg-neon {
-    background-color: var(--color-neon);
-  }
+  /* Color base */
+  .bg-neon        { background-color: var(--color-neon); }
+  .text-neon      { color: var(--color-neon); }
+  .border-neon    { border-color: var(--color-neon); }
+  .bg-background  { background-color: var(--color-background); }
+  .bg-surface     { background-color: var(--color-surface); }
 
-  .text-neon {
-    color: var(--color-neon);
-  }
-
-  .border-neon {
-    border-color: var(--color-neon);
-  }
-
-  .bg-background {
-    background-color: var(--color-background);
-  }
-
-  .bg-surface {
-    background-color: var(--color-surface);
-  }
-
+  /* Glow effects — combinan con el resplandor del logo */
   .glow-hover:hover {
-    box-shadow: 0 0 20px rgba(239, 255, 0, 0.05);
+    box-shadow: 0 0 20px rgba(19, 244, 138, 0.12);
+  }
+
+  /* Gradient de marca para texto (icono → texto) */
+  .text-gradient-brand {
+    background: linear-gradient(90deg, #0BF789 0%, #13F48A 50%, #0de079 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Drop-shadow que replica el glow del logo */
+  .logo-glow {
+    filter: drop-shadow(0 0 8px rgba(19, 244, 138, 0.6))
+            drop-shadow(0 0 20px rgba(19, 244, 138, 0.25));
   }
 }
