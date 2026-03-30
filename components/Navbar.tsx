@@ -1,7 +1,8 @@
 "use client";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Zap } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import Image from "next/image";
 
 const navLinks = [
   { label: "Servicios", href: "#servicios" },
@@ -29,15 +30,20 @@ export default function Navbar() {
       }`}
     >
       <nav className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-        {/* Logo */}
-        <a href="/" className="flex items-center gap-2 font-bold text-xl">
-          <div className="w-7 h-7 bg-neon rounded-md flex items-center justify-center">
-            <Zap size={16} className="text-black" />
-          </div>
-          <span className="tracking-tight">Nexora</span>
+
+        {/* ── Logo ── */}
+        <a href="/" className="flex items-center" aria-label="Nexora — Ir al inicio">
+          <Image
+            src="/logo-nexora.png"
+            alt="Nexora Digital Agency"
+            width={140}
+            height={36}
+            priority
+            className="h-8 w-auto object-contain"
+          />
         </a>
 
-        {/* Desktop Links */}
+        {/* ── Desktop Links ── */}
         <ul className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <li key={link.href}>
@@ -51,7 +57,7 @@ export default function Navbar() {
           ))}
         </ul>
 
-        {/* CTA */}
+        {/* ── CTA ── */}
         <a
           href="#contacto"
           className="hidden md:inline-flex items-center gap-2 px-5 py-2 bg-neon text-black text-sm font-bold rounded-lg hover:shadow-[0_0_20px_rgba(239,255,0,0.3)] transition-all"
@@ -59,7 +65,7 @@ export default function Navbar() {
           Agendar demo
         </a>
 
-        {/* Mobile Menu Toggle */}
+        {/* ── Mobile Menu Toggle ── */}
         <button
           className="md:hidden text-white"
           onClick={() => setMenuOpen(!menuOpen)}
@@ -69,7 +75,7 @@ export default function Navbar() {
         </button>
       </nav>
 
-      {/* Mobile Menu */}
+      {/* ── Mobile Menu ── */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
