@@ -10,6 +10,13 @@ export const metadata: Metadata = {
   title: "Nexora | Automatizamos tu negocio con IA",
   description:
     "Dejá de perder clientes por no responder a tiempo. Automatizamos tu negocio para que conviertas más.",
+  icons: {
+    icon: [
+      { url: "/favicon-nexora.png", type: "image/png" },
+    ],
+    shortcut: "/favicon-nexora.png",
+    apple: "/favicon-nexora.png",
+  },
 };
 
 export default function RootLayout({
