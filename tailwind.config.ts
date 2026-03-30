@@ -9,7 +9,11 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        neon: "#efff00",
+        // ── Marca Nexora — extraído del logo al pixel ──────────────────────
+        // Core neon: #13F48A (verde neón puro del icono N)
+        // Glow highlight: #0BF789 (brillo central del logo)
+        neon: "#13F48A",
+        "neon-bright": "#0BF789",
         background: "#0a0a0a",
         surface: "#111111",
       },
