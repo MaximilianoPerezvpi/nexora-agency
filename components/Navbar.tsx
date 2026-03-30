@@ -1,19 +1,21 @@
 "use client";
+
+// ─── IMPORTANTE: Image debe estar importado para que el logo funcione ───────
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import Image from "next/image";
 
 const navLinks = [
-  { label: "Servicios", href: "#servicios" },
-  { label: "Cómo funciona", href: "#como-funciona" },
-  { label: "Resultados", href: "#resultados" },
-  { label: "Contacto", href: "#contacto" },
+  { label: "Servicios",       href: "#servicios"     },
+  { label: "Cómo funciona",   href: "#como-funciona" },
+  { label: "Resultados",      href: "#resultados"    },
+  { label: "Contacto",        href: "#contacto"      },
 ];
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled,  setScrolled]  = useState(false);
+  const [menuOpen,  setMenuOpen]  = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -31,19 +33,21 @@ export default function Navbar() {
     >
       <nav className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
 
-        {/* ── Logo ── */}
-        <a href="/" className="flex items-center" aria-label="Nexora — Ir al inicio">
-          <Image
-            src="/logo-nexora.png"
-            alt="Nexora Digital Agency"
-            width={140}
-            height={36}
-            priority
-            className="h-8 w-auto object-contain"
-          />
+        {/* ── LOGO — imagen en lugar de texto ─────────────────────────────── */}
+        <a href="/" aria-label="Nexora — inicio" className="flex items-center">
+          <div className="relative h-10 w-[150px]">
+            <Image
+              src="/logo-nexora.png"
+              alt="Nexora Logo"
+              fill
+              priority
+              className="object-contain object-left"
+            />
+          </div>
         </a>
+        {/* ─────────────────────────────────────────────────────────────────── */}
 
-        {/* ── Desktop Links ── */}
+        {/* Desktop Links */}
         <ul className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <li key={link.href}>
@@ -57,7 +61,7 @@ export default function Navbar() {
           ))}
         </ul>
 
-        {/* ── CTA ── */}
+        {/* CTA */}
         <a
           href="#contacto"
           className="hidden md:inline-flex items-center gap-2 px-5 py-2 bg-neon text-black text-sm font-bold rounded-lg hover:shadow-[0_0_20px_rgba(239,255,0,0.3)] transition-all"
@@ -65,7 +69,7 @@ export default function Navbar() {
           Agendar demo
         </a>
 
-        {/* ── Mobile Menu Toggle ── */}
+        {/* Mobile toggle */}
         <button
           className="md:hidden text-white"
           onClick={() => setMenuOpen(!menuOpen)}
@@ -75,7 +79,7 @@ export default function Navbar() {
         </button>
       </nav>
 
-      {/* ── Mobile Menu ── */}
+      {/* Mobile Menu */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
@@ -85,6 +89,16 @@ export default function Navbar() {
             transition={{ duration: 0.2 }}
             className="md:hidden bg-background/95 backdrop-blur-md border-b border-white/5 px-6 py-6 flex flex-col gap-5"
           >
+            {/* Logo en mobile menu también */}
+            <div className="relative h-8 w-[120px] mb-2">
+              <Image
+                src="/logo-nexora.png"
+                alt="Nexora Logo"
+                fill
+                className="object-contain object-left"
+              />
+            </div>
+
             {navLinks.map((link) => (
               <a
                 key={link.href}
