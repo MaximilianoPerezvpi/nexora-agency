@@ -1,21 +1,20 @@
 "use client";
 
-// ─── IMPORTANTE: Image debe estar importado para que el logo funcione ───────
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
-  { label: "Servicios",       href: "#servicios"     },
-  { label: "Cómo funciona",   href: "#como-funciona" },
-  { label: "Resultados",      href: "#resultados"    },
-  { label: "Contacto",        href: "#contacto"      },
+  { label: "Servicios",     href: "#servicios"     },
+  { label: "Cómo funciona", href: "#como-funciona" },
+  { label: "Resultados",    href: "#resultados"    },
+  { label: "Contacto",      href: "#contacto"      },
 ];
 
 export default function Navbar() {
-  const [scrolled,  setScrolled]  = useState(false);
-  const [menuOpen,  setMenuOpen]  = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -33,9 +32,18 @@ export default function Navbar() {
     >
       <nav className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
 
-        {/* ── LOGO — imagen en lugar de texto ─────────────────────────────── */}
-        <a href="/" aria-label="Nexora — inicio" className="flex items-center">
-          <div className="relative h-10 w-[150px]">
+        {/* ── LOGO ──────────────────────────────────────────────────────── */}
+        {/* El logo-glow replica el efecto de resplandor del icono 'N'      */}
+        <a
+          href="/"
+          aria-label="Nexora — inicio"
+          className="flex items-center group"
+        >
+          <div className="relative h-9 w-[148px] transition-all duration-300 group-hover:logo-glow"
+            style={{
+              filter: "drop-shadow(0 0 6px rgba(19,244,138,0.35))",
+            }}
+          >
             <Image
               src="/logo-nexora.png"
               alt="Nexora Logo"
@@ -45,7 +53,7 @@ export default function Navbar() {
             />
           </div>
         </a>
-        {/* ─────────────────────────────────────────────────────────────────── */}
+        {/* ─────────────────────────────────────────────────────────────── */}
 
         {/* Desktop Links */}
         <ul className="hidden md:flex items-center gap-8">
@@ -61,10 +69,21 @@ export default function Navbar() {
           ))}
         </ul>
 
-        {/* CTA */}
+        {/* CTA — usa el neon exacto del logo */}
         <a
           href="#contacto"
-          className="hidden md:inline-flex items-center gap-2 px-5 py-2 bg-neon text-black text-sm font-bold rounded-lg hover:shadow-[0_0_20px_rgba(239,255,0,0.3)] transition-all"
+          className="hidden md:inline-flex items-center gap-2 px-5 py-2 bg-neon text-black text-sm font-bold rounded-lg transition-all hover:-translate-y-0.5"
+          style={{
+            boxShadow: "0 0 0 rgba(19,244,138,0)",
+          }}
+          onMouseEnter={(e) => {
+            (e.currentTarget as HTMLElement).style.boxShadow =
+              "0 0 20px rgba(19,244,138,0.35), 0 0 8px rgba(19,244,138,0.2)";
+          }}
+          onMouseLeave={(e) => {
+            (e.currentTarget as HTMLElement).style.boxShadow =
+              "0 0 0 rgba(19,244,138,0)";
+          }}
         >
           Agendar demo
         </a>
@@ -89,8 +108,11 @@ export default function Navbar() {
             transition={{ duration: 0.2 }}
             className="md:hidden bg-background/95 backdrop-blur-md border-b border-white/5 px-6 py-6 flex flex-col gap-5"
           >
-            {/* Logo en mobile menu también */}
-            <div className="relative h-8 w-[120px] mb-2">
+            {/* Logo en mobile */}
+            <div
+              className="relative h-8 w-[130px] mb-1"
+              style={{ filter: "drop-shadow(0 0 5px rgba(19,244,138,0.3))" }}
+            >
               <Image
                 src="/logo-nexora.png"
                 alt="Nexora Logo"
