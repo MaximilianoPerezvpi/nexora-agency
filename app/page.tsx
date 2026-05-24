@@ -211,39 +211,6 @@ function ServiceCard({
 /* ══════════════════════════════════════════════════════════════
    TESTIMONIAL
 ══════════════════════════════════════════════════════════════ */
-function Testimonial({ quote, name, role, metric, metricLabel }: {
-  quote: string; name: string; role: string; metric: string; metricLabel: string;
-}) {
-  return (
-    <motion.div variants={fadeUp}
-      className="group flex flex-col gap-5 rounded-2xl border border-white/[0.06] bg-white/[0.02] p-8 transition-all duration-300 hover:border-white/[0.10]"
-    >
-      <div className="flex gap-0.5">
-        {Array.from({ length: 5 }).map((_, i) => (
-          <Star key={i} size={13} fill={NEON} style={{ color: NEON }} />
-        ))}
-      </div>
-      <p className="flex-1 text-sm italic leading-relaxed text-gray-300">"{quote}"</p>
-      <div className="flex items-center justify-between border-t border-white/[0.05] pt-5">
-        <div className="flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-full border text-sm font-black"
-            style={{ background: `${NEON_DIM}0.08)`, borderColor: `${NEON_DIM}0.2)`, color: NEON }}>
-            {name[0]}
-          </div>
-          <div>
-            <p className="text-sm font-semibold">{name}</p>
-            <p className="text-xs text-gray-500">{role}</p>
-          </div>
-        </div>
-        <div className="text-right">
-          <p className="text-xl font-black" style={{ color: NEON }}>{metric}</p>
-          <p className="text-xs text-gray-500">{metricLabel}</p>
-        </div>
-      </div>
-    </motion.div>
-  );
-}
-
 /* ══════════════════════════════════════════════════════════════
    FAQ ITEM
 ══════════════════════════════════════════════════════════════ */
@@ -315,7 +282,7 @@ function ContactSection() {
             <span style={{ color: NEON }}>tu negocio.</span>
           </h2>
           <p className="mx-auto mt-4 max-w-md text-base text-gray-500">
-            Diagnóstico inicial gratis. Respondemos en menos de 2 horas.
+            Contanos qué necesitás y te respondemos con una propuesta concreta en menos de 2 horas.
           </p>
         </motion.div>
 
@@ -459,7 +426,7 @@ function ContactSection() {
                         initial={{ x: "-110%" }} whileHover={{ x: "110%" }}
                         transition={{ duration: 0.5, ease: "easeInOut" }} />
                       <span className="relative z-10 flex items-center gap-2 text-sm">
-                        Enviar y recibir diagnóstico gratis <Send size={15} />
+                      Enviar consulta <Send size={15} />
                       </span>
                     </motion.button>
                     <p className="text-center text-[11px] text-gray-600">
@@ -519,11 +486,11 @@ export default function Home() {
         <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5 }}
           className="relative z-10 flex flex-col items-center gap-4 sm:flex-row">
-          <Cta href="#formulario" variant="primary" className="text-base">
-            Quiero una Auditoría Gratis <ArrowRight size={17} />
+          <Cta href="#servicios" variant="primary" className="text-base">
+            Ver nuestros servicios <ArrowRight size={17} />
           </Cta>
-          <Cta href="#servicios" variant="ghost" className="text-base">
-            Ver servicios <ChevronRight size={15} />
+          <Cta href="#formulario" variant="ghost" className="text-base">
+            Hablemos <ChevronRight size={15} />
           </Cta>
         </motion.div>
 
@@ -652,7 +619,7 @@ export default function Home() {
                   ))}
                 </div>
                 <Cta href="#formulario" variant="primary" className="text-sm px-6 py-3">
-                  Quiero este servicio <ArrowRight size={15} />
+                  Consultá por este servicio <ArrowRight size={15} />
                 </Cta>
               </div>
             </motion.div>
@@ -754,7 +721,7 @@ export default function Home() {
       </section>
 
       {/* ════════════════════ PROCESO ════════════════════ */}
-      <section className="w-full border-t border-white/[0.05] py-32 px-6">
+      <section id="proceso" className="w-full border-t border-white/[0.05] py-32 px-6">
         <div className="mx-auto max-w-5xl">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }}
             variants={fadeUp} className="mb-20 text-center">
@@ -772,7 +739,7 @@ export default function Home() {
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }}
               variants={stagger(0.18)} className="flex flex-col gap-16">
               {[
-                { step:"01", title:"Auditoría gratuita",    desc:"Analizamos tu proceso de ventas y te decimos en 30 minutos exactamente dónde estás perdiendo plata. Sin rodeos.", icon:<Activity size={20}/>, side:"left" },
+                { step:"01", title:"Analizamos tu negocio",   desc:"Entendemos tu situación actual, tus objetivos y dónde está el cuello de botella. Sin rodeos ni plantillas genéricas.", icon:<Activity size={20}/>, side:"left" },
                 { step:"02", title:"Diseño del sistema",    desc:"Construimos la estrategia y el stack a medida. Nada genérico. Cada flujo pensado para tu industria y tu cliente.", icon:<Sparkles size={20}/>, side:"right" },
                 { step:"03", title:"Lanzamos y escalamos",  desc:"En 7 días tu sistema está vivo. Medimos, reportamos y optimizamos mes a mes para que tu facturación siga subiendo.", icon:<TrendingUp size={20}/>, side:"left" },
               ].map((item) => (
@@ -809,26 +776,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ════════════════════ TESTIMONIOS ════════════════════ */}
-      <section className="w-full border-t border-white/[0.05] py-32 px-6">
-        <div className="mx-auto max-w-6xl">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }}
-            variants={fadeUp} className="mb-16 text-center">
-            <Badge>Resultados reales</Badge>
-            <h2 className="mt-6 text-4xl font-black tracking-tighter md:text-5xl">
-              Ellos ya están escalando.
-              <br /><span className="text-gray-600">¿Cuándo empezás vos?</span>
-            </h2>
-          </motion.div>
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }}
-            variants={stagger(0.13)} className="grid gap-5 md:grid-cols-2">
-            <Testimonial quote="Filtramos a los curiosos y solo hablamos con gente lista para comprar. El bot paga solo en el primer mes. Ojalá lo hubiera hecho antes." name="Martín L." role="E-commerce · Montevideo" metric="+40%" metricLabel="en ventas" />
-            <Testimonial quote="Antes perdía horas respondiendo a la madrugada. Ahora el sistema agenda solo. Me devolvieron el tiempo libre y las ventas subieron igual." name="Sofía R." role="Clínica Estética · Buenos Aires" metric="-10hs" metricLabel="por semana" />
-            <Testimonial quote="La landing nueva convierte el doble y carga en un segundo. Mi competencia sigue con webs lentas de 2019. La diferencia es brutal." name="Diego M." role="Inmobiliaria · Punta del Este" metric="2x" metricLabel="conversión" />
-            <Testimonial quote="En 7 días teníamos el sistema vivo y los leads calificados entrando solos al CRM. No son una agencia, son un equipo de tu lado." name="Valentina C." role="SaaS B2B · Montevideo" metric="7 días" metricLabel="al lanzar" />
-          </motion.div>
-        </div>
-      </section>
 
       {/* ════════════════════ CTA FINAL ════════════════════ */}
       <section id="contacto" className="w-full py-32 px-6">
@@ -840,21 +787,31 @@ export default function Home() {
             style={{ borderColor: `${NEON_DIM}0.22)` }}>
             <div className="pointer-events-none absolute inset-x-1/4 top-0 h-px"
               style={{ background: `linear-gradient(90deg, transparent, ${NEON_DIM}0.6), transparent)` }} />
-            <Badge>Cupos limitados — 5 auditorías por semana</Badge>
+            <Badge>Nexora · Partners de crecimiento</Badge>
             <h2 className="mt-8 text-4xl font-black tracking-tighter leading-[1.0] md:text-6xl">
-              Tu competencia ya está<br />
-              <span style={{ color: NEON }}>usando IA. ¿Y vos?</span>
+              ¿Listo para llevar tu
+              <br /><span style={{ color: NEON }}>negocio al siguiente nivel?</span>
             </h2>
-            <p className="mx-auto mt-5 mb-10 max-w-xl text-lg leading-relaxed text-gray-400">
-              Agendá tu auditoría gratuita hoy. En 30 minutos te mostramos cuánto
-              estás dejando sobre la mesa y cómo recuperarlo. Sin compromiso.
+            <p className="mx-auto mt-5 mb-8 max-w-xl text-lg leading-relaxed text-gray-400">
+              Ya sea que necesites IA, diseño web, redes sociales o branding —
+              trabajamos con vos para encontrar la solución que más le conviene a tu negocio.
+              Sin compromiso, sin letra chica.
             </p>
+            {/* service pills */}
+            <div className="mb-10 flex flex-wrap justify-center gap-2">
+              {["Agentes de IA","Community Management","Diseño Web","Growth & Ads","Branding"].map((s, i) => (
+                <span key={i} className="rounded-full border px-4 py-1.5 text-xs font-semibold text-gray-300 transition-colors"
+                  style={{ borderColor:`${NEON_DIM}0.18)`, background:`${NEON_DIM}0.04)` }}>
+                  {s}
+                </span>
+              ))}
+            </div>
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Cta href="https://wa.me/1234567890" variant="primary" external className="px-10 py-5 text-base">
-                Empezar a Escalar Ahora <ArrowRight size={18}/>
+              <Cta href="#formulario" variant="primary" className="px-10 py-5 text-base">
+                Hablemos de tu proyecto <ArrowRight size={18}/>
               </Cta>
-              <Cta href="#formulario" variant="ghost" className="px-8 py-5 text-base">
-                Escribirnos
+              <Cta href="https://wa.me/1234567890" variant="ghost" external className="px-8 py-5 text-base">
+                WhatsApp directo
               </Cta>
             </div>
             <p className="mt-6 text-sm text-gray-600">
@@ -884,7 +841,7 @@ export default function Home() {
               { q:"¿Qué incluye Community Management?", a:"Estrategia de contenido mensual, producción y publicación para Instagram, Facebook y/o LinkedIn, gestión de mensajes directos, reportes de métricas y opcionalmente pauta en Meta y Google Ads. No es solo postear fotos: es construir una audiencia que compra." },
               { q:"¿Ofrecen soporte post-lanzamiento?", a:"Sí, siempre. Todos nuestros servicios incluyen soporte y optimización post-lanzamiento. Somos partners de largo plazo: muchos clientes llevan más de 12 meses con nosotros porque seguimos generando valor mes a mes." },
               { q:"¿Necesito conocimientos técnicos para usar la IA?", a:"Para nada. Nos encargamos de todo: configuración, integración con tus herramientas (WhatsApp, CRM, agenda) y capacitación. Vos solo ves los resultados. Si algo falla, lo resolvemos nosotros." },
-              { q:"¿Trabajan con cualquier tipo de negocio?", a:"Trabajamos mejor con negocios que ya tienen tracción y quieren escalar: e-commerce, clínicas, inmobiliarias, SaaS y consultoras. Si tenés dudas, agendá la auditoría gratuita — en 30 minutos te decimos si podemos ayudarte." },
+              { q:"¿Trabajan con cualquier tipo de negocio?", a:"Trabajamos mejor con negocios que ya tienen tracción y quieren crecer: e-commerce, clínicas, inmobiliarias, SaaS y consultoras. Si tenés dudas sobre si podemos ayudarte, escribinos — en una charla rápida te lo decimos." },
             ].map((faq, i) => (
               <FaqItem key={i} q={faq.q} a={faq.a} i={i} />
             ))}
