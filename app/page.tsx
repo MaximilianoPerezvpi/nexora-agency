@@ -282,7 +282,7 @@ function ContactSection() {
             <span style={{ color: NEON }}>tu negocio.</span>
           </h2>
           <p className="mx-auto mt-4 max-w-md text-base text-gray-500">
-            Contanos qué necesitás y te respondemos con una propuesta concreta en menos de 2 horas.
+            Contanos qué necesitás y te respondemos con una propuesta a medida en menos de 2 horas.
           </p>
         </motion.div>
 
@@ -294,8 +294,8 @@ function ContactSection() {
             {[
               { icon: <Clock size={20} />,     title: "Respuesta en 2hs",       desc: "Nada de esperar días. Si mandás el formulario hoy, hoy charlamos." },
               { icon: <ShieldCheck size={20} />, title: "100% confidencial",    desc: "Tu información nunca se comparte ni se usa para publicidad." },
-              { icon: <Target size={20} />,     title: "Diagnóstico real",       desc: "No te mandamos un PDF genérico. Te decimos exactamente dónde perdés plata." },
-              { icon: <Rocket size={20} />,     title: "Sin contratos largos",  desc: "Empezamos mes a mes. Si no ves resultados, te vas sin problema." },
+              { icon: <Target size={20} />,     title: "Propuesta a medida",     desc: "Nada genérico. Cada solución está pensada para tu negocio, tu industria y tus objetivos." },
+              { icon: <Rocket size={20} />,     title: "Empezamos rápido",       desc: "En 48hs tenés una propuesta lista. En 7 días, el primer entregable funcionando." },
             ].map((item, i) => (
               <motion.div key={i} variants={fadeUp}
                 className="flex items-start gap-4 rounded-2xl border border-white/[0.05] bg-white/[0.02] p-5 transition-all hover:border-white/[0.09]"
@@ -371,7 +371,7 @@ function ContactSection() {
                     className="flex flex-col gap-4"
                   >
                     <p className="mb-1 text-lg font-black tracking-tight">
-                      Hablemos sin vueltas 👋
+                      ¿En qué te podemos ayudar? 👋
                     </p>
 
                     {/* Nombre */}
@@ -409,7 +409,7 @@ function ContactSection() {
                     <div className="flex flex-col gap-1.5">
                       <label className="text-[11px] font-bold uppercase tracking-wider text-gray-500">Tu situación</label>
                       <textarea required rows={3} onFocus={fFocus("msg")} onBlur={fBlur}
-                        placeholder="¿Cuál es tu mayor problema hoy? Cuanto más nos cuentes, mejor el diagnóstico."
+                        placeholder="Contanos tu situación actual y qué querés lograr. Cuanto más detalle, mejor la propuesta."
                         className={`${inputCls} resize-none`} />
                     </div>
 
@@ -430,7 +430,7 @@ function ContactSection() {
                       </span>
                     </motion.button>
                     <p className="text-center text-[11px] text-gray-600">
-                      Sin spam · Sin compromiso · 100% confidencial
+                      Respondemos en menos de 2hs · 100% confidencial
                     </p>
                   </motion.form>
                 )}
@@ -499,7 +499,7 @@ export default function Home() {
           transition={{ delay: 0.95, duration: 0.7 }}
           className="relative z-10 mt-16 flex flex-wrap justify-center gap-6 text-sm text-gray-500"
         >
-          {["+50 negocios escalados","Respuesta en <1 seg","Partners, no proveedores","Sin contrato mínimo"].map((t, i) => (
+          {["+50 negocios escalados","Respuesta en <1 seg","Partners, no proveedores","Propuesta en 48hs"].map((t, i) => (
             <div key={i} className="flex items-center gap-2">
               <CheckCircle size={13} style={{ color: NEON }} />
               <span>{t}</span>
@@ -794,8 +794,7 @@ export default function Home() {
             </h2>
             <p className="mx-auto mt-5 mb-8 max-w-xl text-lg leading-relaxed text-gray-400">
               Ya sea que necesites IA, diseño web, redes sociales o branding —
-              trabajamos con vos para encontrar la solución que más le conviene a tu negocio.
-              Sin compromiso, sin letra chica.
+              trabajamos con vos para construir la solución que tu negocio necesita.
             </p>
             {/* service pills */}
             <div className="mb-10 flex flex-wrap justify-center gap-2">
@@ -815,7 +814,7 @@ export default function Home() {
               </Cta>
             </div>
             <p className="mt-6 text-sm text-gray-600">
-              Respondemos en &lt;2hs · Sin contrato mínimo · 100% personalizado
+              Respondemos en &lt;2hs · Propuesta a medida · 100% personalizado
             </p>
           </div>
         </motion.div>
