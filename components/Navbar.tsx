@@ -6,10 +6,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
-  { label: "Servicios",     href: "#servicios"     },
-  { label: "Cómo funciona", href: "#como-funciona" },
-  { label: "Resultados",    href: "#resultados"    },
-  { label: "Contacto",      href: "#contacto"      },
+  { label: "Servicios",   href: "#servicios"  },
+  { label: "Proceso",     href: "#proceso"    },
+  { label: "Contacto",    href: "#formulario" },
 ];
 
 export default function Navbar() {
@@ -69,13 +68,11 @@ export default function Navbar() {
           ))}
         </ul>
 
-        {/* CTA — usa el neon exacto del logo */}
+        {/* CTA */}
         <a
-          href="#contacto"
+          href="#formulario"
           className="hidden md:inline-flex items-center gap-2 px-5 py-2 bg-neon text-black text-sm font-bold rounded-lg transition-all hover:-translate-y-0.5"
-          style={{
-            boxShadow: "0 0 0 rgba(19,244,138,0)",
-          }}
+          style={{ boxShadow: "0 0 0 rgba(19,244,138,0)" }}
           onMouseEnter={(e) => {
             (e.currentTarget as HTMLElement).style.boxShadow =
               "0 0 20px rgba(19,244,138,0.35), 0 0 8px rgba(19,244,138,0.2)";
@@ -85,7 +82,7 @@ export default function Navbar() {
               "0 0 0 rgba(19,244,138,0)";
           }}
         >
-          Agendar demo
+          Hablemos
         </a>
 
         {/* Mobile toggle */}
@@ -132,11 +129,11 @@ export default function Navbar() {
               </a>
             ))}
             <a
-              href="#contacto"
+              href="#formulario"
               onClick={() => setMenuOpen(false)}
               className="mt-2 px-5 py-3 bg-neon text-black text-sm font-bold rounded-lg text-center"
             >
-              Agendar demo
+              Hablemos
             </a>
           </motion.div>
         )}
